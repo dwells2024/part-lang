@@ -14,16 +14,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
   }
 
-#generator {
-  width: 800px;
-  height: 400px;
-}
-
-#profile {
-  width: 400px;
-  height: 400px;
-}
-
 #home {
   width: 200px;
   height: 200px;
