@@ -11,7 +11,7 @@ function Profile({setPage, openAIKey, setOpenAIKey}) {
         saveData('openAIKey', updatedOpenAIKey);
     }
     return (
-    <div className='flex flex-col mx-5'>
+    <div className='flex flex-col mx-5' id="profile">
         <div className='flex flex-row justify-between my-3 items-center'>
             <h2>Title</h2>
             <button onClick={() => {setPage(ROUTES.GENERATOR)}}>Back Arrow</button>

@@ -5,12 +5,32 @@
 @tailwind utilities;
 
 body {
-    width: 800px; /* Add width */
-    height: 400px; /* Add height */
-    margin: 0;
+    /* width: 800px; 
+    height: 400px; */
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
       "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+#generator {
+  width: 800px;
+  height: 400px;
+}
+
+#profile {
+  width: 400px;
+  height: 400px;
+}
+
+#home {
+  width: 200px;
+  height: 200px;
+}
+
+/* .button_icon {
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+} */

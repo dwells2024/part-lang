@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Home from './components/Home';
 import Generator from './components/Generator';
 import Profile from './components/Profile';
 import { ROUTES } from './utils/routes';
@@ -24,7 +25,7 @@ function App() {
     case ROUTES.PROFILE:
       return <Profile setPage={setPage} openAIKey={openAIKey} setOpenAIKey={setOpenAIKey}/>
     default:
-      return <Generator setPage={setPage} openAIKey={openAIKey} />
+      return <Home setPage={setPage} />
   }
 }
 
