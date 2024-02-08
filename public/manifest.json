@@ -1,13 +1,11 @@
 {
   "manifest_version": 3,
-  "name": "LinkedIn Cover Letter Generator",
+  "name": "PartLang Extension",
   "version": "1.0.0",
-  "description": "A Chrome extension to generate cover letters using ChatGPT API.",
+  "description": "A Chrome extension that uses AI to identify partisan language and suggest more neutrual alternatives.",
   "permissions": ["activeTab", "storage", "scripting"],
   "icons": {
-    "16": "icon.png",
-    "48": "icon.png",
-    "128": "icon.png"
+    
   },
   "action": {
     "default_popup": "index.html",
