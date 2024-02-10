@@ -24,6 +24,14 @@ body {
   height: 300px;
 }
 
+#anlyswriting {
+  width: 800px;
+  height: 800px;
+}
+
+#AnlysBack {
+  right: 40px;
+}
 /* .button_icon {
   font-size: 20px;
   justify-content: center;

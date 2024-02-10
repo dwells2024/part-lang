@@ -4,6 +4,7 @@ import { saveData } from '../utils/localStorage';
 import { Button } from 'antd';
 import { AiOutlineRollback } from 'react-icons/ai';
 
+console.log("opening settings")
 function Settings({setPage, openAIKey, setOpenAIKey}) {
     const handleSubmit = (e) => {
         console.log("sumbit")

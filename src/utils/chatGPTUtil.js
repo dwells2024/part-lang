@@ -14,6 +14,7 @@ const CHATGPT_MODEL = "gpt-3.5-turbo";
 // Analyze the following text:
 
 export const postChatGPTMessage = async (message, openAIKey) => {
+    console.log(openAIKey)
     const config = {
         headers: {
             Authorization: `Bearer ${openAIKey}`,
