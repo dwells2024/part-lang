@@ -6,12 +6,15 @@ import { loadData } from './utils/localStorage';
 
 function App() {
   const [page, setPage] = useState();
-  const [openAIKey, setOpenAIKey] = useState("test");
+  const [openAIKey, setOpenAIKey] = useState();
+  const [pageTextContent, setPageTextContent] = useState();
 
   useEffect(() => {
     const fetchLocalData = async () => {
-      const fetchAIKey = await loadData("openAIKey");
+      const fetchText = await loadData("pageTextContent");
+      setPageTextContent(fetchText);
 
+      const fetchAIKey = await loadData("openAIKey");
       setOpenAIKey(fetchAIKey);
     }
 
@@ -20,11 +23,11 @@ function App() {
 
   switch (page) {
     case ROUTES.HOME:
-      return <Home setPage={setPage} />
+      return <Home setPage={setPage} pageTextContent={pageTextContent} openAIKey={openAIKey} />
     case ROUTES.SETTINGS:
       return <Settings setPage={setPage} openAIKey={openAIKey} setOpenAIKey={setOpenAIKey} />
     default:
-      return <Home setPage={setPage} />
+      return <Home setPage={setPage} pageTextContent={pageTextContent} openAIKey={openAIKey} />
   }
 }
 
