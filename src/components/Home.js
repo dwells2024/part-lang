@@ -31,7 +31,7 @@ function Home({setPage, pageTextContent, openAIKey}) {
             <Button type="primary" onClick={() => {analyzeWebsite()}}>
                 Anaylze Website
             </Button>
-            <Button type='primary'>
+            <Button type='primary' onClick={() => {setPage(ROUTES.ANLYSWRITING)}}>
                 Anaylze Your Writing
             </Button>
         </div>
