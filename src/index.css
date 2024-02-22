@@ -32,6 +32,39 @@ body {
 #AnlysBack {
   right: 40px;
 }
+
+.highlighted-phrase {
+  position: relative;
+  background-color: yellow;
+  cursor: pointer;
+}
+
+.tooltip-content {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  z-index: 1;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  color: #333;
+  text-align: left;
+  font-size: 0.9em;
+  line-height: 1.6;
+  max-width: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  margin-bottom: 5px;
+}
+
+.highlighted-phrase:hover .tooltip-content {
+  display: block;
+}
+
+
+
+
 /* .button_icon {
   font-size: 20px;
   justify-content: center;
