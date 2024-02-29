@@ -24,12 +24,11 @@ function Home({setPage, pageTextContent, setPageTextContent, openAIKey}) {
         // console.log("page text content - ", pageTextContent)
         try {
             console.log("Analyze website pressed");
-            const message = `Your job is to identify any phrases that have partisan bias. Your response must only be a valid JSON list. The list should have an object for each phrase found in the format: 
-            {
+            const message = `Your job is to identify any phrases that have partisan bias. Respond only with a list of objects for each phrase found in the format: [{
                 "phrase": "the phrase with bias",
                 "reason": "the reason it is biased",
                 "suggestion": "neutral suggestion"
-            }
+            }]
             Analyze the following text: ${pageTextContent}`;
 
             console.log("sending message - ", message);
