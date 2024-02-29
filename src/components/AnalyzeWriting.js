@@ -1,29 +1,49 @@
 import React, { useState } from 'react';
-import { ROUTES } from '../utils/routes';
 import { Button } from 'antd';
 import { AiOutlineRollback } from 'react-icons/ai';
 import { postChatGPTMessage } from '../utils/chatGPTUtil';
+import { ROUTES } from '../utils/routes';
 
 function AnalyzeWriting({ openAIKey, setPage }) {
-    const [text, setText] = useState(''); // Use this state for both input and displaying results
+    const [inputText, setInputText] = useState('');
+    const [highlightedText, setHighlightedText] = useState('');
+    const [showInput, setShowInput] = useState(false);
+
+    const highlightPhrases = (text, phrases) => {
+        let newText = text;
+        phrases.forEach((phrase) => {
+            const { phrase: biasPhrase, suggestion, reason } = phrase;
+            const escapedPhrase = biasPhrase.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+            const regex = new RegExp(escapedPhrase, 'gi');
+            newText = newText.replace(regex, `<mark class="highlighted-phrase">${biasPhrase}<span class="tooltip-content"><strong>Suggestion:</strong> ${suggestion}<br><em>Reason:</em> ${reason}</span></mark>`);
+        });
+        return newText;
+    };
+    
+    
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent the form from causing a page reload
+        e.preventDefault();
         try {
             console.log("Analyze pressed");
-            const message = `Your job is to identify any phrases that have partisan bias. Respond only with a JSON object with an object for each phrase found in the format: {
+            const message = `Your job is to identify any phrases that have partisan bias. Respond only with an object in the format: [{
                 "phrase": "the phrase with bias",
                 "reason": "the reason it is biased",
-                "suggestion": "neutral suggestion"
-            }
-            Analyze the following text: ${text}`;
-
+                "suggestion": "neutral suggestion",
+            }]
+            Analyze the following text: ${inputText}`;
+            
             const chatGPTResponse = await postChatGPTMessage(message, openAIKey);
-            // Assuming chatGPTResponse is the desired response format you want to display
-            setText(chatGPTResponse); // Update text to display API response, formatted for readability
+            console.log("OpenAI Response:", chatGPTResponse);
+            const biasedPhrases = JSON.parse(chatGPTResponse);
+        
+            const processedText = highlightPhrases(inputText, biasedPhrases);
+            setHighlightedText(processedText);
+            setShowInput(true);
+
         } catch (error) {
-            console.log("Error:", error);
-            setText("Error during analysis. Please try again."); // Display error message in textarea
+            console.error("Error:", error);
+            setInputText("Error during analysis. Please try again.");
         }
     };
 
@@ -38,27 +58,35 @@ function AnalyzeWriting({ openAIKey, setPage }) {
                     onClick={() => setPage(ROUTES.HOME)}
                 />
             </div>
-            <form className='flex-col justify-start' onSubmit={handleSubmit}>
-                <div className='mb-5 items-stretch'>
+            {!showInput ? (
+                <form onSubmit={handleSubmit}>
                     <textarea
                         id="text"
                         name="text"
-                        style={{ width: '90%', height: '300px', padding: '10px', resize: 'vertical'}}
+                        style={{ width: '95%', height: '400px', padding: '10px', resize: 'vertical'}}
                         placeholder='Enter text to analyze...'
                         required
-                        value={text}
-                        onChange={(e) => setText(e.target.value)} // Keep updating the state with user input
+                        value={inputText}
+                        onChange={(e) => setInputText(e.target.value)}
                     />
-                </div>
-                <button
-                    type="submit"
-                    className='justify-self-center'
-                >
-                    Analyze
-                </button>
-            </form>
+                    <button type="submit" className='justify-self-center'>Analyze</button>
+                </form>
+            ) : (
+                <div dangerouslySetInnerHTML={{ __html: highlightedText }} 
+                style={{
+                    paddingTop: '60px',
+                    paddingBottom: '75px',
+                    paddingLeft: '15px',
+                    paddingRight: '15px',
+                    fontSize: '16px',
+                    lineHeight: '2',
+                    letterSpacing: '0.5px',
+                    wordWrap: 'break-word',
+                    maxWidth: '100%',
+                }}/>
+            )}
         </div>
     );
-};
+}
 
 export default AnalyzeWriting;
