@@ -63,7 +63,7 @@ function AnalyzeWriting({ openAIKey, setPage }) {
                     <textarea
                         id="text"
                         name="text"
-                        style={{ width: '90%', height: '300px', padding: '10px', resize: 'vertical'}}
+                        style={{ width: '95%', height: '400px', padding: '10px', resize: 'vertical'}}
                         placeholder='Enter text to analyze...'
                         required
                         value={inputText}
@@ -72,7 +72,18 @@ function AnalyzeWriting({ openAIKey, setPage }) {
                     <button type="submit" className='justify-self-center'>Analyze</button>
                 </form>
             ) : (
-                <div dangerouslySetInnerHTML={{ __html: highlightedText }} /> // Render the highlighted text as HTML
+                <div dangerouslySetInnerHTML={{ __html: highlightedText }} 
+                style={{
+                    paddingTop: '60px',
+                    paddingBottom: '75px',
+                    paddingLeft: '15px',
+                    paddingRight: '15px',
+                    fontSize: '16px',
+                    lineHeight: '2',
+                    letterSpacing: '0.5px',
+                    wordWrap: 'break-word',
+                    maxWidth: '100%',
+                }}/>
             )}
         </div>
     );

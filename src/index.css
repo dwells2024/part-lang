@@ -25,17 +25,17 @@ body {
 }
 
 #anlyswriting {
-  width: 800px;
-  height: 800px;
+  width: 750px;
+  
 }
 
 #AnlysBack {
-  right: 40px;
+  right: 20px;
 }
 
 .highlighted-phrase {
   position: relative;
-  background-color: yellow;
+  background-color: rgba(245, 144, 39, 0.8);
   cursor: pointer;
 }
 
@@ -43,7 +43,8 @@ body {
   display: none;
   position: absolute;
   bottom: 100%;
-  left: 0;
+  left: 50%; /* Center tooltip relative to the parent */
+  transform: translateX(-50%); /* Adjust horizontal position to truly center it */
   z-index: 1;
   padding: 5px;
   border: 1px solid #ddd;
@@ -53,10 +54,13 @@ body {
   text-align: left;
   font-size: 0.9em;
   line-height: 1.6;
-  max-width: 300px;
+  min-width: 250px; /* Increased minimum width */
+  max-width: 400px; /* Adjust maximum width as needed */
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   margin-bottom: 5px;
+  white-space: normal; /* Ensure text wraps */
 }
+
 
 .highlighted-phrase:hover .tooltip-content {
   display: block;
