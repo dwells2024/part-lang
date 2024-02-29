@@ -24,13 +24,13 @@ function App() {
 
   switch (page) {
     case ROUTES.HOME:
-      return <Home setPage={setPage} pageTextContent={pageTextContent} openAIKey={openAIKey} />
+      return <Home setPage={setPage} pageTextContent={pageTextContent} setPageTextContent={setPageTextContent} openAIKey={openAIKey} />
     case ROUTES.SETTINGS:
       return <Settings setPage={setPage} openAIKey={openAIKey} setOpenAIKey={setOpenAIKey} />
     case ROUTES.ANLYSWRITING:
       return <AnalyzeWriting openAIKey={openAIKey} setPage={setPage} />
     default:
-      return <Home setPage={setPage} pageTextContent={pageTextContent} openAIKey={openAIKey} />
+      return <Home setPage={setPage} pageTextContent={pageTextContent} setPageTextContent={setPageTextContent} openAIKey={openAIKey} />
   }
 }
 

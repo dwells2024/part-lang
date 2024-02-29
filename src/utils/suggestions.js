@@ -1,5 +1,4 @@
 /*global chrome*/
-import { loadData, saveData } from "./localStorage";
 
 // from https://www.cnn.com/2024/02/08/politics/joe-biden-age/index.html
 const sampleResponse = 
@@ -66,12 +65,10 @@ const sampleResponse =
 }
 ]
 
-export function getSuggestionsForWebsite(text, openAIKey) {
+export function getSuggestionsForWebsite(suggestions) {
     console.log("suggestions");
 
-    const response = sampleResponse;
-
     // sends a message to the background script
-    chrome.runtime.sendMessage({ from: "popup", action: "analyzeWebsite", suggestions: response});
+    chrome.runtime.sendMessage({ from: "popup", action: "analyzeWebsite", suggestions: suggestions});
 }
 

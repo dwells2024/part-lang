@@ -43,20 +43,3 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     });
   }
 });
-
-  // // Add an event listener for messages from the popup
-  // chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-  //   // Check if the message is from the popup and contains the action to execute the background task
-  //   if (message.from === "popup" && message.action === "executeBackgroundTask") {
-  //       // Call the function to execute the background task
-  //       console.log("background recieved message")
-  //       // Send a message to the content script
-  //       chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-  //         console.log(tabs);
-  //         chrome.tabs.sendMessage(tabs[0].id, {from: "background", action: "executeBackgroundTask" })
-  //         // chrome.tabs.sendMessage(tabs[0].id, {greeting: "Hello from popup.js!"}, function(response) {
-  //         //     console.log(response.farewell);
-  //         // });
-  //       });
-  //   }
-  // });
