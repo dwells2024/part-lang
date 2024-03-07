@@ -64,7 +64,7 @@ function Home({setPage, pageTextContent, setPageTextContent, openAIKey}) {
                 {isLoading ? "Analyzing..." : "Analyze Website"}
             </Button>
             <Button type='primary' onClick={() => {setPage(ROUTES.ANLYSWRITING)}}>
-                Anaylze Your Writing
+                Analyze Your Writing
             </Button>
         </div>
   )
